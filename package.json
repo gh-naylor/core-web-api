@@ -1,0 +1,40 @@
+{
+  "name": "mwc-core-web-api",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node app.js",
+    "test": "grunt test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mywebclass/core-web-api.git"
+  },
+  "dependencies": {
+    "express": ">= 3.2.x",
+    "connect-flash": ">= 0.1.x",
+    "jade": ">= 0.30.x",
+    "mongoose": ">= 3.6.x",
+    "nodemailer": ">= 0.4.x",
+    "yaml-config": ">= 0.2.x",
+    "generate-key": ">= 0.0.x",
+    "passport": "~0.1.17",
+    "mers": "~0.6.2-0",
+    "moment": "~2.0.0",
+    "passport-google": "~0.3.0"
+  },
+  "devDependencies": {
+    "mocha": ">= 1.10.x",
+    "should": ">= 1.2.x",
+    "supertest": "~0.7.0",
+    "grunt-cli": "*",
+    "grunt-mocha-cli": "~1.0.6",
+    "grunt-contrib-jshint": "~0.6.0",
+    "jsdoc": ">= 3.2.0-dev",
+    "grunt": "~0.4.1",
+    "grunt-jsdoc": "~0.3.3",
+    "grunt-shell": "~0.3.0",
+    "node-dev": "~2.0.1"
+  },
+  "engine": ">= 0.10.x"
+}
