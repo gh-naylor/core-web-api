@@ -33,7 +33,7 @@ module.exports = function(grunt) {
       'README.md'
       ],
       options: {
-        destination: 'client/app/docs',
+        destination: 'docs',
         configure: 'config/jsdoc.json'
       }
     }
