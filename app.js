@@ -1,4 +1,3 @@
-
 /**
  * Module dependencies.
  */
@@ -34,6 +33,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(app.router);
+app.use( express.static( path.join( __dirname, '..', 'users', 'app' ) ) );
 
 // Bootstrap db connection
 mongoose.connect(config.db);
@@ -44,8 +44,12 @@ fs.readdirSync(models_path).forEach(function (file) {
   require(models_path+'/'+file);
 });
 
-// Initial data setup
-require('./lib/initializeData');
+mongoose.connection.once('open', function() {
+  // Initial data setup
+  require('./lib/initializeData');
+
+  require('./lib/aclInitialization')(mongoose, config);
+});
 
 // Configure user authentication
 require('./config/passport')(config, passport);
