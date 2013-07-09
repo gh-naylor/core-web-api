@@ -1,10 +1,10 @@
 /**
-* Define the routes here
-*/
-module.exports = function (app, passport) {
+ * Define the routes here
+ */
+module.exports = function(app, passport) {
 
-  var authorization = require('../controllers/authorization'),
-    users = require('../controllers/users'),
+  var authorization = require('./authorization'),
+    users = require('./users'),
     auth = require('../lib/authorization');
 
   app.get('/signup', authorization.signup);
@@ -26,23 +26,23 @@ module.exports = function (app, passport) {
     failureRedirect: '/login'
   }));
 
-  app.get('/auth/twitter', function (req, res) {
+  app.get('/auth/twitter', function(req, res) {
     res.send(200);
   });
 
-  app.get('/auth/facebook', function (req, res) {
+  app.get('/auth/facebook', function(req, res) {
     res.send(200);
   });
 
-  app.get('/auth/linked-in', function (req, res) {
+  app.get('/auth/linked-in', function(req, res) {
     res.send(200);
   });
 
-  app.get('/auth/meetup', function (req, res) {
+  app.get('/auth/meetup', function(req, res) {
     res.send(200);
   });
 
-  app.get('/auth/github', function (req, res) {
+  app.get('/auth/github', function(req, res) {
     res.send(200);
   });
 
