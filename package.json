@@ -29,7 +29,6 @@
     "mocha": ">= 1.10.x",
     "should": ">= 1.2.x",
     "supertest": "~0.7.0",
-    "grunt-cli": "*",
     "grunt-mocha-cli": "~1.0.6",
     "grunt-contrib-jshint": "~0.6.0",
     "jsdoc": ">= 3.2.0-dev",
