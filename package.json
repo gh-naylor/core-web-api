@@ -22,7 +22,8 @@
     "mers": ">= 0.6.x",
     "moment": ">= 2.0.x",
     "passport-google": ">= 0.3.x",
-    "passport-local-mongoose": ">= 0.2.x"
+    "passport-local-mongoose": ">= 0.2.x",
+    "acl": "~0.2.3"
   },
   "devDependencies": {
     "mocha": ">= 1.10.x",
