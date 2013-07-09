@@ -2,14 +2,12 @@
  * Module dependencies.
  */
 
-var
-  express = require('express'),
+var express = require('express'),
   http = require('http'),
   path = require('path'),
   fs = require('fs');
 
-var
-  app = module.exports = express(),
+var app = module.exports = express(),
   env = process.env.NODE_ENV || 'development',
   config = require('yaml-config').readConfig(__dirname + '/config/config.yml',
     env),
@@ -36,15 +34,15 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use(app.router);
-app.use( express.static( path.join( __dirname, '..', 'users', 'app' ) ) );
+app.use(express.static(path.join(__dirname, '..', 'users', 'app')));
 
 // Bootstrap db connection
 mongoose.connect(config.db);
 
 // Bootstrap models
 var models_path = __dirname + '/models';
-fs.readdirSync(models_path).forEach(function (file) {
-  require(models_path+'/'+file);
+fs.readdirSync(models_path).forEach(function(file) {
+  require(models_path + '/' + file);
 });
 
 mongoose.connection.once('open', function() {
@@ -66,8 +64,10 @@ if ('development' == app.get('env')) {
 require('./routes/init')(app, passport);
 
 // add REST interface
-app.use('/rest', mers({mongoose: mongoose}).rest());
+app.use('/rest', mers({
+  mongoose: mongoose
+}).rest());
 
-http.createServer(app).listen(app.get('port'), function(){
+http.createServer(app).listen(app.get('port'), function() {
   console.log('Express server listening on port ' + app.get('port'));
 });
