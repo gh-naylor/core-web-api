@@ -9,10 +9,10 @@ module.exports = function (app, passport) {
 
   app.get('/signup', authorization.signup);
   app.post('/signup', authorization.newLocalUser);
-  app.get('/signin', authorization.signin);
-  app.post('/signin', passport.authenticate('local', {
+  app.get('/login', authorization.login);
+  app.post('/login', passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/signin',
+    failureRedirect: '/login',
     failureFlash: true
   }));
   app.get('/logout', authorization.logout);
@@ -23,7 +23,7 @@ module.exports = function (app, passport) {
   app.get('/auth/google', passport.authenticate('google'));
   app.get('/auth/google/return', passport.authenticate('google', {
     successRedirect: '/',
-    failureRedirect: '/signin'
+    failureRedirect: '/login'
   }));
 
   app.get('/auth/twitter', function (req, res) {
