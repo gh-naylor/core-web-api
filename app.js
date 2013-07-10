@@ -5,15 +5,18 @@
 var express = require('express'),
   http = require('http'),
   path = require('path'),
-  fs = require('fs');
-
-var app = module.exports = express(),
-  env = process.env.NODE_ENV || 'development',
-  config = require('yaml-config').readConfig(__dirname + '/config/config.yml',
-    env),
+  fs = require('fs'),
   mongoose = require('mongoose'),
   passport = require('passport'),
-  mers = require('mers');
+  LocalStrategy = require('passport-local').Strategy,
+  mers = require('mers'),
+  flash = require('connect-flash'),
+  config = require('yaml-config')
+    .readConfig(__dirname + '/config/config.yml', env);
+
+var app = module.exports = express(),
+  env = process.env.NODE_ENV || 'development';
+
 
 // all environments
 app.set('port', process.env.PORT || config.port);
@@ -32,6 +35,7 @@ app.use(express.session());
 
 app.use(passport.initialize());
 app.use(passport.session());
+app.use(flash());
 
 app.use(app.router);
 app.use(express.static(path.join(__dirname, '..', 'users', 'app')));

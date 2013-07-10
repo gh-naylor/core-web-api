@@ -8,7 +8,8 @@ var config = require('yaml-config').readConfig(__dirname +
 exports.login = function(req, res) {
   res.render('auth/login', {
     title: 'Login',
-    user: req.user
+    user: req.user,
+    message: req.flash('error')
   });
 };
 
