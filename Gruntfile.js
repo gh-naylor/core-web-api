@@ -6,7 +6,7 @@ module.exports = function(grunt) {
       'Gruntfile.js',
       'lib/**/*.js',
       'config/**/*.js',
-      'controllers/**/*.js',
+      'routes/**/*.js',
       'models/**/*.js',
       'test/**/*.js'
       ]
@@ -27,7 +27,7 @@ module.exports = function(grunt) {
       'app.js',
       'lib/**/*.js',
       'config/**/*.js',
-      'controllers/**/*.js',
+      'routes/**/*.js',
       'models/**/*.js',
       'test/**/*.js',
       'README.md'

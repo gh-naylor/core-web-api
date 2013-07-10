@@ -6,7 +6,7 @@
     "include": [
       "app.js",
       "config",
-      "controllers",
+      "routes",
       "lib",
       "models",
     ],
