@@ -2,10 +2,11 @@
  * User Schema
  **/
 var mongoose = require('mongoose'),
-    Schema = mongoose.Schema,
-    passportLocalMongoose = require('passport-local-mongoose'),
-    moment = require('moment'),
-    config = require('yaml-config').readConfig(__dirname + '/../config/config.yml');
+  Schema = mongoose.Schema,
+  passportLocalMongoose = require('passport-local-mongoose'),
+  moment = require('moment'),
+  config = require('yaml-config')
+    .readConfig(__dirname + '/../config/config.yml');
 
 var UserSchema = new Schema({
   active: Boolean,
@@ -21,13 +22,19 @@ var UserSchema = new Schema({
     },
     emails: [{
       value: String,
-      type: {type: String}
+      type: {
+        type: String
+      }
     }],
     phoneNumbers: [{
       value: String,
-      type: {type: String}
+      type: {
+        type: String
+      }
     }],
-    photos: [{ value: String }]
+    photos: [{
+      value: String
+    }]
   }],
   confirmation: {
     string: String,
@@ -37,16 +44,18 @@ var UserSchema = new Schema({
 
 UserSchema.plugin(passportLocalMongoose);
 
-UserSchema.index({ username: 1 });
+UserSchema.index({
+  username: 1
+});
 
-UserSchema.methods.generateConfirmationLink = function (callback) {
+UserSchema.methods.generateConfirmationLink = function(callback) {
   var rand = require('generate-key');
   this.confirmation.string = rand.generateKey();
   this.confirmation.date = new Date();
   this.save(callback);
 };
 
-UserSchema.methods.activateUser = function (confirmationString, callback) {
+UserSchema.methods.activateUser = function(confirmationString, callback) {
   var err;
   if (typeof confirmationString !== 'undefined') {
     if (confirmationString !== this.confirmation.string) {
@@ -54,8 +63,9 @@ UserSchema.methods.activateUser = function (confirmationString, callback) {
       callback(err);
     }
     var originalDate = moment(this.confirmation.date),
-        now = moment(),
-        expired = (typeof config.confirmationLinkExpire === 'undefined') ? 1 : config.confirmationLinkExpire;
+      now = moment(),
+      expired = (typeof config.confirmationLinkExpire === 'undefined') ? 1 :
+        config.confirmationLinkExpire;
 
     if (now.isAfter(originalDate.add('hours', expired))) {
       err = new Error('The link has expired.');
