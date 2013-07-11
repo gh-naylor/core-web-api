@@ -20,11 +20,6 @@ var app = module.exports = express(),
 
 // all environments
 app.set('port', process.env.PORT || config.port);
-app.set('views', __dirname + '/templates');
-app.set('view engine', 'jade');
-app.use('/styles', express.static(__dirname + '/templates/styles'));
-app.use('/images', express.static(__dirname + '/templates/images'));
-app.use('/scripts', express.static(__dirname + '/templates/scripts'));
 app.use(express.favicon());
 app.use(express.logger('dev'));
 app.use(express.bodyParser());
