@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node app.js",
-    "test": "grunt test"
+    "test": "./node_modules/.bin/grunt test"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,8 @@
     "grunt-contrib-jshint": "~0.6.0",
     "jsdoc": ">= 3.2.0-dev",
     "grunt": "~0.4.1",
+    "grunt-cli":"*",
+    "jshint":"*",
     "grunt-jsdoc": "~0.3.3",
     "grunt-shell": "~0.3.0",
     "node-dev": "~2.0.1"
