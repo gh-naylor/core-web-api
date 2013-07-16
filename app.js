@@ -26,8 +26,12 @@ app.use(express.bodyParser());
 app.use(express.methodOverride());
 
 app.use(express.cookieParser('mywebclass secret cookie'));
-app.use(express.session());
-
+if(process.env.NODE_ENV=='production'){
+    var RedisSessionStore = require('connect-redis')(express);
+    app.use(express.session({store: new RedisSessionStore({'prefix':"core_web_api_session"}), secret: 'hammering  the keyboard'}));
+} else {
+    app.use(express.session());
+}
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

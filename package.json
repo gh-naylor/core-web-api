@@ -13,6 +13,7 @@
   "dependencies": {
     "express": ">= 3.2.x",
     "connect-flash": ">= 0.1.x",
+    "connect-redis":"*",
     "jade": ">= 0.32.x",
     "mongoose": ">= 3.6.x",
     "nodemailer": ">= 0.4.x",

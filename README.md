@@ -36,6 +36,9 @@ Or to run it in development mode:
 $ grunt server
 ```
 
+If you are running this application in *production* mode, you need *Redis* server started installed for sessions.
+Server needs to work with default sessings - it listen on 6379 port of localhost. Password *IS NOT SET*!
+
 ## Running Tests
 
 then run the tests:
